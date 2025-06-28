@@ -1,0 +1,55 @@
+/* .card-item {
+  overflow: hidden;
+  position: relative;
+}
+
+.card-details .movie-title,
+.card-details .vote,
+.card-details .fa {
+  position: absolute;
+  transition: all 0.3s ease-in-out;
+  background: var(--color-main);
+} */
+
+/* Specific styles */
+/* .card-details .movie-title {
+  width: 100%;
+  bottom: -100px;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 5px;
+}
+
+.card-details .vote {
+  top: 0;
+  left: -50px;
+  padding: 10px;
+}
+
+.card-details .fa {
+  top: 0;
+  right: -50px;
+  padding: 15px;
+  cursor: pointer;
+} */
+
+/* Hover Effects */
+/* .card-item:hover .movie-title {
+  bottom: 0;
+}
+
+.card-item:hover .vote {
+  left: 0;
+}
+
+.card-item:hover .fa {
+  right: 0;
+} */
+
+::ng-deep mat-paginator {
+  background-color: var(--color-light) !important;
+  color: var(--color-bg) !important;
+  font-size: 14px;
+  border-radius: 8px;
+  width: fit-content;
+  margin: auto;
+}

@@ -1,0 +1,36 @@
+<app-banner [bannerImage]="watchListBanner"></app-banner>
+
+<section class="my-5 text-white">
+  <div class="container-fluid">
+    <div class="title d-flex justify-content-between mb-3">
+      <h2>My Watchlist</h2>
+    </div>
+    <div class="line w-100"></div>
+
+    <div class="row mt-4">
+      @for (item of watchList; track $index) {
+      <div class="col-12 col-md-6 col-lg-2 mb-4">
+        <div class="card-item">
+          <img
+            [src]="item.poster_path || item.backdrop_path ? imgPath + (item.poster_path || item.backdrop_path) : 'assets/default.jpg'"
+            class="img-fluid" [alt]="item.original_title || item.original_name">
+          <div class="card-details">
+            <span class="vote">{{item.vote_average.toFixed(1)}}</span>
+            <div class="icons d-flex flex-column">
+              <span class="fa fa-trash" (click)="removeFromWatchList(item)"></span>
+              <span class="fa fa-eye  mt-5" (click)="goToDetails(item.id)"></span>
+            </div>
+            <div class="movie-title">{{item.original_title || item.original_name}}</div>
+          </div>
+        </div>
+      </div>
+      }
+    </div>
+
+    @if (watchList.length === 0) {
+    <div class="text-center py-5">
+      <img src="./assets/emptyWatchlist.png" alt="empty">
+    </div>
+    }
+  </div>
+</section>

@@ -1,0 +1,18 @@
+1- navbar --> done
+2- banner
+3- movie
+	* now playing
+	* upcoming
+	* top rated
+	* popular
+	* trending
+4- tv
+	* airing today
+	* top rated
+	* tv show        
+	* popular
+	* trending
+5- person
+	* Hollywood stars 
+6- details
+7- footer --> done

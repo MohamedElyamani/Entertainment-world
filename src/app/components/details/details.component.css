@@ -1,0 +1,51 @@
+.trailer-container {
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+}
+.cast-item {
+  overflow: hidden;
+  position: relative;
+}
+
+.cast-details .movie-title,
+.cast-details .vote,
+.cast-details .fa {
+  position: absolute;
+  transition: all 0.3s ease-in-out;
+  background: var(--color-main);
+}
+
+/* Specific styles */
+.cast-details .movie-title {
+  width: 100%;
+  bottom: -100px;
+  background: rgba(0, 0, 0, 0.7); /* overrides main color */
+  padding: 5px;
+}
+
+.cast-details .vote {
+  top: 0;
+  left: -50px;
+  padding: 10px;
+}
+
+.cast-details .fa {
+  top: 0;
+  right: -50px;
+  padding: 15px;
+  cursor: pointer;
+}
+
+/* Hover Effects */
+.similar .cast-item:hover .movie-title {
+  bottom: 0;
+}
+
+.similar .cast-item:hover .vote {
+  left: 0;
+}
+
+.similar .cast-item:hover .fa {
+  right: 0;
+}

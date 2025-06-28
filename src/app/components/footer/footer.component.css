@@ -1,0 +1,18 @@
+.nav-link{
+    color: #001219;
+    font-size: 14px;
+}
+.copy p{
+    font-size: 14px;
+    text-align: center;
+}
+.social li{
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    cursor: pointer;
+}
+.social li:hover{
+    background: var(--color-main);
+}

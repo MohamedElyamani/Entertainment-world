@@ -1,0 +1,32 @@
+@if (bannerImage) {
+  <header [ngStyle]="{'background-image': 'url(' + bannerImage + ')'}" class="banner-image">
+    <div class="overlay"></div>
+  </header>
+} @else {
+  <owl-carousel-o [options]="bannerOptions">
+    @for (item of bannerImages; track $index) {
+    <ng-template carouselSlide>
+      <header [ngStyle]="{'background-image': 'url(https://image.tmdb.org/t/p/original' + item.backdrop_path + ')'}">
+        <div class="container">
+          <div class="overlay"></div>
+          <div class="row">
+            <div class="col-lg-6 col-md-12">
+              <div class="banner-details text-white d-flex flex-column justify-content-center">
+                <h4>{{item.release_date || item.first_air_date }}</h4>
+                <div class="line"></div>
+                <h2>{{item.original_title || item.original_name}}</h2>
+                <div class="desc my-4 bg p-3 rounded-3">
+                  <p>{{item.overview.slice(0, 200)}}</p>
+                </div>
+                <div class="col-lg-3">
+                  <button class="btn btn-main" (click)="goToDetails(item.id)">More Information</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+    </ng-template>
+    }
+  </owl-carousel-o>
+}

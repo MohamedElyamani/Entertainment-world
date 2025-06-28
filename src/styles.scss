@@ -1,0 +1,148 @@
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material' as mat;
+// Plus imports for other components in your app.
+
+// Include Toastr styles
+@import 'ngx-toastr/toastr';
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Define the theme object.
+$Entertainment-World-theme: mat.define-theme((
+  color: (
+    theme-type: light,
+    primary: mat.$azure-palette,
+    tertiary: mat.$blue-palette,
+  ),
+  density: (
+    scale: 0,
+  )
+));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+:root {
+  @include mat.all-component-themes($Entertainment-World-theme);
+}
+
+// Comment out the line below if you want to use the pre-defined typography utility classes.
+// For more information: https://material.angular.io/guide/typography#using-typography-styles-in-your-application.
+// @include mat.typography-hierarchy($Entertainment-World-theme);
+
+// Comment out the line below if you want to use the deprecated `color` inputs.
+// @include mat.color-variants-backwards-compatibility($Entertainment-World-theme);
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import 'ngx-owl-carousel-o/lib/styles/scss/owl.carousel';
+@import 'ngx-owl-carousel-o/lib/styles/scss/owl.theme.default';
+
+
+:root{
+    --color-bg: #001219;
+    --color-main: #008000;
+    --color-light: #f0f3f2;
+    --rating-color: #ffc908;
+}
+h1,h2,h3,h4 {
+ font-family: "Lato", sans-serif;
+  font-weight: 700;
+}
+p, li{
+ font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+
+}
+body,
+.bg{
+    background: var(--color-bg);
+}
+.nav-link{
+    transition: unset !important;
+    cursor: pointer;
+}
+.nav-item a{
+    color: #fff;
+}
+.nav-item a:hover,
+.nav-item a.active{
+    color: var(--color-main) !important;
+}
+.btn-main,
+.bg-main{
+    background: var(--color-bg);
+    border: 1px solid var(--color-main);
+    color: #fff;
+}
+.btn-main:hover,
+.bg-main:hover{
+    background: var(--color-main);
+}
+.text-main{
+    color: var(--color-main);
+    margin: 0;
+}
+.footer-bg{
+    background: var(--color-light);
+}
+.rating-color {
+  color: var(--rating-color);
+}
+.line{
+    width: 25%;
+    height: 1px;
+    background: #fff;
+}
+.card-item {
+  overflow: hidden;
+  position: relative;
+}
+
+.card-details :where(.movie-title, .vote, .fa) {
+  position: absolute;
+  transition: all 0.3s ease-in-out;
+  background: var(--color-main);
+}
+
+/* Specific styles */
+.card-details .movie-title {
+  width: 100%;
+  bottom: -100px;
+  background: rgba(0, 0, 0, 0.7); /* overrides main color */
+  padding: 5px;
+}
+
+.card-details .vote {
+  top: 0;
+  left: -50px;
+  padding: 10px;
+}
+
+.card-details .fa {
+  top: 0;
+  right: -50px;
+  padding: 15px;
+  cursor: pointer;
+}
+
+/* Hover Effects */
+.card-item:hover .movie-title {
+  bottom: 0;
+}
+
+.card-item:hover .vote {
+  left: 0;
+}
+
+.card-item:hover .fa {
+  right: 0;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+

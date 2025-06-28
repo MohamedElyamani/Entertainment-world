@@ -1,0 +1,33 @@
+<section class="my-5 text-white">
+  <div class="container-fluid">
+    <div class="title d-flex justify-content-between mb-3">
+      <h2>{{this.title}}</h2>
+      @if(category === 'trending'){
+      <button class="btn btn-main" [routerLink]="['/', 'trending', type , 'week']">Discover More</button>
+      }@else {
+      <button class="btn btn-main" [routerLink]="['/', type, category]">Discover More</button>
+      }
+    </div>
+    <div class="line w-100"></div>
+  </div>
+  <owl-carousel-o [options]="nowPlayingOptions">
+    @for (item of items; track $index) {
+    <ng-template carouselSlide>
+      <div class="card-item mt-3">
+        <img
+          [src]="item.poster_path || item.backdrop_path ? imgPath + (item.poster_path || item.backdrop_path) : 'assets/default.jpg'"
+          class="img-fluid" [alt]="item.original_title || item.original_name">
+        <div class="card-details">
+          <span class="vote">{{item.vote_average.toFixed(1)}}</span>
+          <div class="icons d-flex flex-column">
+            <span class="fa fa-heart" [ngClass]="{'text-danger': isFavorite(item)}"
+              (click)="addToWatchList(item)"></span>
+            <span class="fa fa-eye  mt-5" (click)="goToDetails(item.id)"></span>
+          </div>
+          <div class="movie-title">{{item.original_title || item.original_name}}</div>
+        </div>
+      </div>
+    </ng-template>
+    }
+  </owl-carousel-o>
+</section>

@@ -1,0 +1,95 @@
+<section class="p-4">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 text-center">
+        <img src="{{ imgPath + details.poster_path }}" class="w-50" [alt]=details.original_title>
+        <div class="genres mt-3 d-flex justify-content-center gap-3">
+          @for(gen of details.genres; track $index){
+          <span class="bg-main text-white p-2 rounded-3">{{gen.name}}</span>
+          }
+        </div>
+      </div>
+      <div class="col-md-6 text-white">
+        <h3 class="mb-5">{{details.original_title || details.original_name}}</h3>
+        <h4>Overview</h4>
+        <div class="line w-100 mb-3"></div>
+        @if(details.overview){ <p>{{details.overview.slice(0, 200)}}</p> }
+        <div class="data d-flex gap-3">
+          <p class="my-3"><span class="fas fa-star  rating-color"></span>{{ details.vote_average ?
+            details.vote_average.toFixed(1) : '0.0' }}</p>
+          <p class="my-3"><span class="fas fa-clock"></span> {{details.runtime}} min</p>
+          <p class="my-3"><span class="fas fa-calendar-alt"></span> {{details.release_date || details.first_air_date}}
+          </p>
+        </div>
+        <div class="d-flex gap-3">
+          <button class="btn btn-main" (click)="watchNow(details.id)">Watch Trailer</button>
+          <button class="btn btn-main" (click)="addToWatchList()">Add to Watch List</button>
+        </div>
+
+        <!-- Trailer Embed Section -->
+        @if(showTrailer){
+        <div class="trailer-container mt-3" [@slideToggle]>
+          @if(trailerKey){
+          <iframe width="100%" height="315" [src]="safeTrailerUrl" frameborder="0" allowfullscreen>
+          </iframe>
+          }
+        </div>
+        }
+      </div>
+    </div>
+
+    <!-- Cast -->
+    <div class="cast text-white my-5">
+      <h3 class="mb-3">Cast</h3>
+      <div class="line w-100 mb-3"></div>
+      <div class="row">
+        @if(cast.length > 0){
+        @for(cast of cast; track $index){
+        <div class="col-md-2">
+          <div class="cast-item">
+            <img [src]="cast.profile_path ? imgPath + cast.profile_path : 'assets/default.jpg'" class="w-100"
+              [alt]=cast.original_name>
+            <div class="cast-details">
+              <p class="text-main">{{cast.character}}</p>
+              <h4 class="h4">{{cast.original_name}}</h4>
+            </div>
+          </div>
+        </div>
+        }
+        }@else {
+        <h3>{{this.noDataFound}}</h3>
+        }
+      </div>
+    </div>
+
+    <!-- Similar Movies -->
+    <div class="similar text-white my-5">
+      <h3 class="mb-3">Similar</h3>
+      <div class="line w-100 mb-3"></div>
+      <div class="row">
+        @if(similarMovies.length > 0){
+        @for(similar of similarMovies; track $index){
+        <div class="col-md-2 mb-3">
+          <div class="cast-item">
+            <img
+              [src]="similar.poster_path || similar.backdrop_path ? imgPath + (similar.poster_path || similar.backdrop_path) : 'assets/default.jpg'"
+              class="w-100 " [alt]="similar.original_title || similar.original_name">
+            <div class="cast-details">
+              <span class="vote">{{similar.vote_average.toFixed(1)}}</span>
+              <div class="icons d-flex flex-column">
+                <span class="fa fa-heart"></span>
+                <span class="fa fa-eye  mt-5" (click)="goToDetails(similar.id)"></span>
+              </div>
+              <div class="movie-title">{{similar.original_title || similar.original_name}}</div>
+            </div>
+          </div>
+        </div>
+        }
+        }@else {
+        <h3>{{this.noDataFound}}</h3>
+        }
+      </div>
+    </div>
+
+  </div>
+</section>
